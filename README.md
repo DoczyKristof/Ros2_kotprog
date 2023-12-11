@@ -5,9 +5,9 @@
 
 ## Controller Node (controller)
 
-Package Setup (setup.py)
+## Package Setup (setup.py)
 
-Launch Configuration (launch.py)
+## Launch Configuration (launch.py)
 
 
 ## Usage
@@ -19,18 +19,18 @@ How to *build* and use the package.
 
 ## TurtleBot3, ROS 2, and Gazebo Simulation
 ### TurtleBot3:
-Description: TurtleBot3 is a popular open-source robot platform designed for education, research, and development.
+TurtleBot3 is a popular open-source robot platform designed for education, research, and development.
 Features:
 Compact and affordable.
 Widely used for learning ROS and robotic applications.
 #### ROS 2:
-Description: ROS 2 is the second version of the Robot Operating System, providing a flexible framework for writing robot software.
+ROS 2 is the second version of the Robot Operating System, providing a flexible framework for writing robot software.
 Key Features:
 Distributed architecture.
 Real-time capabilities.
 Improved communication protocols.
 ### Gazebo Simulation:
-Description: Gazebo is a powerful open-source robot simulation tool.
+Gazebo is a powerful open-source robot simulation tool.
 Features:
 Realistic physics engine.
 3D visualization.
