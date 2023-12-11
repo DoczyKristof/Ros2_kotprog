@@ -27,6 +27,7 @@ To run the `MoveTurtlebotNode`, use the following command:
 
 ```bash
 ros2 run ros2_course controller
+```
 
 ## Package Setup (setup.py)
 
