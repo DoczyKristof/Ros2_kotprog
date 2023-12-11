@@ -5,7 +5,28 @@
 
 ## Controller Node (controller)
 
+The `MoveTurtlebotNode` is a ROS 2 node designed to control a TurtleBot3 in a Gazebo simulation. It subscribes to laser scan data, adjusts the robot's velocity based on obstacles, and publishes control commands.
 
+### Node Structure
+
+- **Node Name:** `moveturtlebot`
+- **Published Topic:**
+  - `/cmd_vel` (Twist): Velocity commands for controlling the TurtleBot's movement.
+
+- **Subscribed Topic:**
+  - `/scan` (LaserScan): Laser scan data for obstacle detection.
+
+- **Node Behavior:**
+  - Uses laser scan data to determine the forward range.
+  - If the forward range is less than 0.25 meters, the robot stops (`linear.x = 0.0`) and rotates clockwise (`angular.z = 0.5`).
+  - If the forward range is greater than or equal to 0.25 meters, the robot moves forward (`linear.x = 0.25`) and does not rotate (`angular.z = 0.0`).
+
+### Usage
+
+To run the `MoveTurtlebotNode`, use the following command:
+
+```bash
+ros2 run ros2_course controller
 
 ## Package Setup (setup.py)
 
@@ -34,14 +55,7 @@ This package configuration is for the `ros2_course` ROS 2 package. It defines pa
 
 ### Maintainer Information
 
-- **Maintainer:** `ros_user`
-- **Maintainer Email:** `ros_user@todo.todo`
-
 ### Package Description and License
-
-- **Description:** TODO: Add a description of the package.
-
-- **License:** TODO: Declare the license for the package.
 
 ### Tests
 
