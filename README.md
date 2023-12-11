@@ -35,12 +35,3 @@ Features:
 Realistic physics engine.
 3D visualization.
 Support for ROS integration.
-TurtleBot3 in Gazebo with ROS 2:
-Simulation Environment:
-
-Gazebo provides a simulated environment for testing and developing robot applications.
-ROS 2 integration allows seamless communication between the robot software and simulation environment.
-Learning and Development:
-
-TurtleBot3 in Gazebo with ROS 2 is an ideal platform for learning and developing robotic applications in a simulated environment.
-Provides a safe and cost-effective way to experiment with robot control algorithms.
