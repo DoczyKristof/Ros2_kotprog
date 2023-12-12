@@ -127,8 +127,7 @@ Support for ROS integration.
 
 ## Usage 2
 
-How to *try and make it work*.
-cd ~/ros2_ws
+How to *try and make it work*
 
       ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
       ros2 run ros2_course controller
