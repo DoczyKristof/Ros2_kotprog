@@ -139,3 +139,9 @@ How to *try and make it work*
       export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:`ros2 pkg \
       prefix turtlebot3_gazebo \
       `/share/turtlebot3_gazebo/models/
+
+
+
+https://github.com/DoczyKristof/Ros2_kotprog/assets/44243837/6592b23b-fa14-4bca-b14c-488aacb71d2b
+
+
