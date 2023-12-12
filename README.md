@@ -124,3 +124,19 @@ Features:
 Realistic physics engine.
 3D visualization.
 Support for ROS integration.
+
+## Usage 2
+
+How to *try and make it work*.
+cd ~/ros2_ws
+
+      ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+      ros2 run ros2_course controller
+
+      source ~/ros2_ws/install/setup.bash
+      export ROS_DOMAIN_ID=11
+      export TURTLEBOT3_MODEL=burger
+      source /opt/ros/foxy/setup.bash
+      export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:`ros2 pkg \
+      prefix turtlebot3_gazebo \
+      `/share/turtlebot3_gazebo/models/
