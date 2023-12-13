@@ -5,11 +5,11 @@
 
 ## Controller Node (controller)
 
-The `MoveTurtlebotNode` is a ROS 2 node designed to control a TurtleBot3 in a Gazebo simulation. It subscribes to laser scan data, adjusts the robot's velocity based on obstacles, and publishes control commands.
+The `MoveTurtlebotNode` is a ROS 2 node designed to control a TurtleBot3 in a Gazebo simulation based on laser scan data. It adjusts the robot's velocity to navigate and avoid obstacles.
 
 ### Node Structure
 
-- **Node Name:** `moveturtlebot`
+- **Node Name:** `controller`
 - **Published Topic:**
   - `/cmd_vel` (Twist): Velocity commands for controlling the TurtleBot's movement.
 
@@ -17,9 +17,9 @@ The `MoveTurtlebotNode` is a ROS 2 node designed to control a TurtleBot3 in a Ga
   - `/scan` (LaserScan): Laser scan data for obstacle detection.
 
 - **Node Behavior:**
-  - Uses laser scan data to determine the forward range.
-  - If the forward range is less than 0.25 meters, the robot stops (`linear.x = 0.0`) and rotates clockwise (`angular.z = 0.5`).
-  - If the forward range is greater than or equal to 0.25 meters, the robot moves forward (`linear.x = 0.25`) and does not rotate (`angular.z = 0.0`).
+  - Uses laser scan data to determine distances in the front, front-right, and front-left directions.
+  - If any of these distances is less than a threshold of 0.8 meters, the robot stops (`linear.x = 0.0`) and rotates clockwise (`angular.z = 2.5`).
+  - If all distances are greater than or equal to 0.8 meters, the robot moves forward (`linear.x = 0.5`) and does not rotate (`angular.z = 0.0`).
 
 ### Usage
 
@@ -56,7 +56,14 @@ This package configuration is for the `ros2_course` ROS 2 package. It defines pa
 
 ### Maintainer Information
 
+- **Maintainer:** `ros_user`
+- **Maintainer Email:** `ros_user@todo.todo`
+
 ### Package Description and License
+
+- **Description:** TODO: Add a description of the package.
+
+- **License:** TODO: Declare the license for the package.
 
 ### Tests
 
@@ -67,44 +74,38 @@ This package configuration is for the `ros2_course` ROS 2 package. It defines pa
 
 - **Console Scripts:**
   - Defines two console scripts:
-    - `hello`: Executes the `main` function from the `ros2_course.hello` module.
+    - `hello`: Executes the `main` function from the `ros2_course.hello` module. (legacy)
     - `controller`: Executes the `main` function from the `ros2_course.controller` module.
 
+## ~~Launch Configuration (launch.py)~~ (deprecated)
 
-## Launch Configuration (launch.py)
+~~This launch configuration sets up a Gazebo simulation for TurtleBot3, including the robot spawn, Gazebo server, Gazebo client, and a custom controller.~~
 
-This launch configuration sets up a Gazebo simulation for TurtleBot3, including the robot spawn, Gazebo server, Gazebo client, and a custom controller.
+### ~~Components~~
 
-### Components
+- ~~**Empty World Argument:**~~
+  - ~~A launch argument to choose an empty world or provide your own world file.~~
 
-- **Empty World Argument:**
-  - A launch argument to choose an empty world or provide your own world file.
+- ~~*Spawn Robot Entity Node:**~~
+  - ~~Spawns a Gazebo entity named 'robot' at coordinates (0.0, 0.0, 0.0).~~
 
-- **Spawn Robot Entity Node:**
-  - Spawns a Gazebo entity named 'robot' at coordinates (0.0, 0.0, 0.0).
+- ~~**Gazebo Server Node:**~~
+  - ~~Launches the Gazebo server for simulation.~~
 
-- **Gazebo Server Node:**
-  - Launches the Gazebo server for simulation.
+- ~~**Gazebo Client Node:**~~
+  - ~~aunches the Gazebo client for visualization.~~
 
-- **Gazebo Client Node:**
-  - Launches the Gazebo client for visualization.
+- ~~**Controller Node:**~~
+  - ~~uns the `controller` node from the `ros2_course` package under the 'robot' namespace.~~
 
-- **Controller Node:**
-  - Runs the `controller` node from the `ros2_course` package under the 'robot' namespace.
+- ~~**Execute Process - Launch World:**~~
+  - ~~Executes a ROS 2 launch command to load the TurtleBot3 Gazebo world.~~
 
-- **Execute Process - Launch World:**
-  - Executes a ROS 2 launch command to load the TurtleBot3 Gazebo world.
-
-- **Move TurtleBot Node:**
-  - Runs the `move_turtlebot` node from the `ros2_course` package under the 'robot' namespace.
+- ~~**Move TurtleBot Node:**~~
+  - ~~Runs the `move_turtlebot` node from the `ros2_course` package under the 'robot' namespace.~~
 
 
 ## Usage
-
-How to *build* and use the package.
-
-    cd ~/ros2_ws
-    colcon build --symlink-install
 
 ## TurtleBot3, ROS 2, and Gazebo Simulation
 ### TurtleBot3:
@@ -125,14 +126,19 @@ Realistic physics engine.
 3D visualization.
 Support for ROS integration.
 
-## Usage 2
+## Usage
 
 How to *try and make it work*
 
+      cd ~/ros2_ws
+      colcon build --symlink-install
+      
       ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
       ros2 run ros2_course controller
 
+      #.bashrc
       source ~/ros2_ws/install/setup.bash
+      
       export ROS_DOMAIN_ID=11
       export TURTLEBOT3_MODEL=burger
       source /opt/ros/foxy/setup.bash
