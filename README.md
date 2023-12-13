@@ -105,8 +105,6 @@ This package configuration is for the `ros2_course` ROS 2 package. It defines pa
   - ~~Runs the `move_turtlebot` node from the `ros2_course` package under the 'robot' namespace.~~
 
 
-## Usage
-
 ## TurtleBot3, ROS 2, and Gazebo Simulation
 ### TurtleBot3:
 TurtleBot3 is a popular open-source robot platform designed for education, research, and development.
@@ -128,23 +126,39 @@ Support for ROS integration.
 
 ## Usage
 
-How to *try and make it work*
+### How to *try and make it work*
+
+- .bashrc
+      
+      source ~/ros2_ws/install/setup.bash
+      export ROS_DOMAIN_ID=11
+      export TURTLEBOT3_MODEL=burger
+      source /opt/ros/humble/setup.bash
+      export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:`ros2 pkg \
+      prefix turtlebot3_gazebo \
+      `/share/turtlebot3_gazebo/models/
+
+- Install debian packages
+  
+      sudo apt-get update
+      sudo apt install ros-humble-turtlebot3*
+
+- Using rosdep get dependencies
+
+      rosdep update
+      rosdep install --from-paths src --ignore-src  -y  #(I don't think i used this one)
+
+- Build the workspace
 
       cd ~/ros2_ws
       colcon build --symlink-install
+
+- Launch the `simulation` and the `controller`
       
       ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
       ros2 run ros2_course controller
 
-      #.bashrc
-      source ~/ros2_ws/install/setup.bash
       
-      export ROS_DOMAIN_ID=11
-      export TURTLEBOT3_MODEL=burger
-      source /opt/ros/foxy/setup.bash
-      export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:`ros2 pkg \
-      prefix turtlebot3_gazebo \
-      `/share/turtlebot3_gazebo/models/
 
 
 
