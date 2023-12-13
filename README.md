@@ -54,17 +54,6 @@ This package configuration is for the `ros2_course` ROS 2 package. It defines pa
 - **Required Dependency:**
   - `setuptools`: Necessary for packaging and distribution.
 
-### Maintainer Information
-
-- **Maintainer:** `ros_user`
-- **Maintainer Email:** `ros_user@todo.todo`
-
-### Package Description and License
-
-- **Description:** TODO: Add a description of the package.
-
-- **License:** TODO: Declare the license for the package.
-
 ### Tests
 
 - **Test Requirements:**
